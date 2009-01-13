@@ -1876,7 +1876,7 @@ begintemplate CD
   utilSection {
    APStats = new \
 	 SpikeStatsContainer(binsnum, stimPeriod, poissDt,p.ignoreSpikesBefore)
-   APToStats = new NetCon(&axonNode.v(0), APStats.s, p.APthresh, 0 , 1)
+   axonNode APToStats = new NetCon(&v(0), APStats.s, p.APthresh, 0 , 1)
    for i = 0, p.nDen-1 {
 	dendriteStats[i] = new \
 	  SpikeStatsContainer(binsnum, stimPeriod, poissDt,p.ignoreSpikesBefore)
@@ -1884,9 +1884,9 @@ begintemplate CD
 	 exSynapseStats[i][j] = new \
 	   SpikeStatsContainer(binsnum, stimPeriod, poissDt, p.ignoreSpikesBefore)
 	 if (p.probRate > 0) {
-	  exSynapseToStats[i][j] = new \
+	  dendrite[i] exSynapseToStats[i][j] = new \
 		NetCon(&exSynapse[i][j].firing, exSynapseStats[i][j].s, 0.5, 0, 1)
-	  exSynapseToDendriteStats[i][j] = new \
+	  dendrite[i] exSynapseToDendriteStats[i][j] = new \
 		NetCon(&exSynapse[i][j].firing, dendriteStats[i].s, 0.5, 0, 1)
 	 }
 	}
@@ -2512,7 +2512,7 @@ begintemplate Inhibitor
    inputCounter.count = p.inIntegrate-1 // start primed for firing
 
    // first count spikes at axon
-   spikesToCounter = new NetCon(&pa.CDs[0].axonNode.v(0), \
+   pa.CDs[0].axonNode spikesToCounter = new NetCon(&v(0), \
     inputCounter, p.APthresh, 0 , 1) //no delay, unit weight
 
    // then, when enough spikes, trigger inhibitory synapses
@@ -2520,13 +2520,13 @@ begintemplate Inhibitor
    if (p.gMInSyn > 0) {
 	for k=0,p.nArray-1 {
 	 for i = 0, p.nDen-1 {
-	  counterToInSynapses[k][i] = new \
+	  inhibSection counterToInSynapses[k][i] = new \
 		NetCon(&inputCounter.count,pa.CDs[k].inSynapse[i], \
       p.inIntegrate-0.5, p.inDelay, pa.CDs[k].inSynapse[i].gmax)
 	 }
 	}
 	// finally, clear counter and start again
-	counterToSelf = new NetCon\
+	inhibSection counterToSelf = new NetCon\
 	  (&inputCounter.count, inputCounter, p.inIntegrate-0.5, 0, -p.inIntegrate)
    }
   }

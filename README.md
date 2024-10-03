@@ -2,7 +2,7 @@ Jonathan Z. Simon, Catherine E. Carr and Shihab A. Shamma, A Dendritic
 Model of Coincidence Detection in the Avian Brainstem, Neurocomputing 
 26-27, 263-269 1999.
 
-Abstract:
+## Abstract:
 We have constructed a detailed biophysical model of coincidence
 detector neurons in the nucleus laminaris (auditory brainstem) which are
 purported to detect interaural time differences (ITDs). In the model, ITD

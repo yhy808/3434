@@ -1,5 +1,5 @@
 Jonathan Z. Simon, Catherine E. Carr and Shihab A. Shamma, A Dendritic
-Model of Coincidence Detection in the Avian Brainstem, Neurocomputing 
+Model of Coincidence Detection in the Avian Brainstem, *Neurocomputing* 
 26-27, 263-269 1999.
 
 ## Abstract:
@@ -16,6 +16,9 @@ multiple dendrites.
 ( 1999 Elsevier Science B.V. All rights reserved. Keywords
  Nucleus laminaris; Dendrite; Coincidence
 
-See:
-http://www.isr.umd.edu/Labs/CSSL/
-http://www.isr.umd.edu/Labs/CSSL/csslhome/pubs/NLModel99.pdf
+See: http://www.isr.umd.edu/Labs/CSSL/ \
+     http://www.isr.umd.edu/Labs/CSSL/csslhome/pubs/NLModel99.pdf
+
+Changelog:
+----------
+2024-10: Converted readme to markdown
